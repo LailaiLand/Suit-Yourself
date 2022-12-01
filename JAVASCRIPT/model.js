@@ -93,30 +93,8 @@ const model = {
       img: "bilde av vinter",
     },
   ],
-  tempArrays: [
-    {
-      feet: [],
-    },
-    {
-      legs: [],
-    },
-    {
-      shirt: [],
-    },
-    {
-      jacket: [],
-    },
-    {
-      gloves: [],
-    },
-    {
-      head: [],
-    },
-    {
-      currentOutfit: [],
-    },
-
-  ],
-  currentCondition: [
-  ]
+  categories: ["feet", "legs", "shirt", "jacket", "head", "hands"],
+  tempCategories: [[], [], [], [], [], []],
+  currentOutfit: [],
+  currentCondition: [],
 };

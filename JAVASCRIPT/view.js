@@ -15,13 +15,29 @@ function startScreen(){
     model.view.innerHTML = html;
 };
 function suitUpScreen(){
-    //TODO pushe alt kompatibelt fra hver kategori i tempArrays, randomisere hver tempArrays og hente ut 1,
-    // skrive random in i HTML, pushe hele lista med valgt til currentOutfit tempArrays for bruk i changeArticle()
+   //TODO legge til onclick i sortClothes så kan velge hele tempCategory plagget ligger på
+   //så kan bytte med noe annet som passer conditions
     let html = `
     <h1>Suit Yourself!</h1>
     `;
     fetchClothes();
-    // sortClothes();
+    html += sortClothes();
+
     model.view.innerHTML = html;
+}
+function wardrobeScreen(){
+    //TODO lage fillWardrobe som har argument for å hente sesong fra madel.season
+    //loop ghennom clothing og legg bilder av klær i div med fillindex som id
+    let html = /*html*/`
+    <h1>Suit Yourself!</h1>
+    <button onclick="fillWardrobe(0)">Spring clothes</button>
+    <div id="fill0"></div>
+    <button onclick="fillWardrobe(1)">Summer clothes</button>
+    <div id="fill1"></div>
+    <button onclick="fillWardrobe(2)">Fall clothes</button>
+    <div id="fill2"></div>
+    <button onclick="fillWardrobe(3)">Winter clothes</button>
+    <div id="fill3"></div>
+    `
 }
 

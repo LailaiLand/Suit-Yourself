@@ -97,4 +97,5 @@ const model = {
   tempCategories: [[], [], [], [], [], []],
   currentOutfit: [],
   currentCondition: [],
+  currentWardrobe: [[], [], [], [],], 
 };

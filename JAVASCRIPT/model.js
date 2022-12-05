@@ -370,7 +370,7 @@ const model = {
       name: "No-show socks 3",
       img: "IMG/Socks/No-show socks 3.png",
       category: "socks",
-      season: ["summer",],
+      season: ["spring", "summer",],
       weather: ["sunny", "rainy", "cloudy",],
     },
     {

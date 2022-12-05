@@ -39,24 +39,18 @@ function fetchClothes() {
 function sortClothes() {
   //Om flere plagg i en kategori passer til samme vær og sesong,
   //så spytter denne funksjonen ut bare ett av dem
-  //TODO html burde bli en div med onclick for å kjøre plaggbytte når flere ting er tilgjengelig
   let html = ``;
   for (let i = 0; i < model.tempCategories.length; i++) {
-    for (let j = 0; j < model.tempCategories[i].length; j++) {
-      if (model.tempCategories[i][j]) {
-        let singleItem =
-          model.tempCategories[i][getRandom(model.tempCategories[i].length)];
-        model.currentCondition.push(singleItem);
-        html += singleItem.img;
-      }
-    }
+    let singleItem =
+      model.tempCategories[i][getRandom(model.tempCategories[i].length)];
+    model.currentOutfit.push(singleItem);
   }
   return html;
 }
 function fillWardrobe(seasonSelection) {
   //legger til klær kun i riktig sesong i rett liste.
   //currentWardrobe må tømmes først for å ikke skrive alle sesongene på en gang.
-  model.currentWardrobe = [[],[],[],[],];
+  model.currentWardrobe = [[], [], [], []];
   for (i = 0; i < model.clothing.length; i++) {
     if (model.clothing[i].season.includes(model.season[seasonSelection].type)) {
       model.currentWardrobe[seasonSelection].push(model.clothing[i]);

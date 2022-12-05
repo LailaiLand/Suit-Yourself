@@ -1,4 +1,5 @@
 //TODO legg til CSS.
+//TODO finn ut hvordan kan hente verdi av .img inni apostroffer i img tag
 startScreen();
 function startScreen() {
   model.currentWardrobe = [[], [], [], []];
@@ -15,14 +16,20 @@ function startScreen() {
   model.view.innerHTML = html;
 }
 function suitUpScreen() {
-  //TODO legge til onclick i sortClothes så kan velge hele tempCategory plagget ligger på
+  //TODO legge til onclick så kan velge hele tempCategory plagget ligger på
   //så kan bytte med noe annet som passer conditions
+  //TODO legg klær inn i egen div med class så kan CSS-e dem
+  model.currentOutfit = [];
   let html = `
     <h1>Suit Yourself!</h1>
     `;
   fetchClothes();
-  html += sortClothes();
+  sortClothes();
+  for (let i = 0; i < model.currentOutfit.length; i++) {
+    html += `<img src="${model.currentOutfit[i].img}">`;
+  }
   html += /*html*/ `
+      <button onclick="suitUpScreen()">Reselect all</button>
       <button onclick="startScreen()">Back</button>
         `;
   model.view.innerHTML = html;
@@ -50,8 +57,8 @@ function buttonFill() {
           `;
     if (model.currentWardrobe[i]) {
       for (j = 0; j < model.currentWardrobe[i].length; j++) {
-        fillButton += /*html*/ `
-            ${model.currentWardrobe[i][j].img}
+        fillButton += `
+            <img src="${model.currentWardrobe[i][j].img}">
             `;
       }
     }

@@ -19,31 +19,48 @@ function suitUpScreen() {
   //TODO legge til onclick så kan velge hele tempCategory plagget ligger på
   //så kan bytte med noe annet som passer conditions
   //TODO legg klær inn i egen div med class så kan CSS-e dem
-  model.currentOutfit = [];
+  let clothes = "";
   let html = `
-    <h1>Suit Yourself!</h1>
-    `;
-  fetchClothes();
-  sortClothes();
+  <h1>Suit Yourself!</h1>
+  `;
+  if (!model.changeCurrent) {
+    model.currentOutfit = [];
+    fetchClothes();
+    sortClothes();
+  }
+  if (model.changeCommenced) {
+    model.changeCurrent = false;
+    model.changeCommenced = false;
+  }
   for (let i = 0; i < model.currentOutfit.length; i++) {
-    html += `<img src="${model.currentOutfit[i].img}">`;
+    clothes += `<img 
+    class = "clothing"
+    onmouseover="this.style = 'background-color: green; cursor: pointer;'"
+    onmouseout="this.style.backgroundColor = 'transparent'"
+    onclick="changeArticle(${i})"
+    src="${model.currentOutfit[i].img}">`;
   }
   html += /*html*/ `
-      <button onclick="suitUpScreen()">Reselect all</button>
-      <button onclick="startScreen()">Back</button>
+      <div class="screen">
+        ${clothes}
+        ${model.changeCurrent ? model.currentChange : ""}
+        <button onclick="suitUpScreen()">Reselect all</button>
+        <button onclick="startScreen()">Back</button>
+      </div>
         `;
   model.view.innerHTML = html;
+  console.log("temp cat", model.tempCategories);
 }
 function wardrobeScreen() {
   //her skal du trykke på knapper for å se klær du kan bruke i hver sesong
   let html = "";
   html = /*html*/ `
   <h1>Suit Yourself!</h1>
+    <div class="screen">
+    ${buttonFill()}
+    <button onclick="startScreen()">Back</button>
+  </div>  
   `;
-  html += buttonFill();
-  html += /*html*/ `
-  <button onclick="startScreen()">Back</button>
-    `;
   model.view.innerHTML = html;
 }
 function buttonFill() {
@@ -58,7 +75,7 @@ function buttonFill() {
     if (model.currentWardrobe[i]) {
       for (j = 0; j < model.currentWardrobe[i].length; j++) {
         fillButton += `
-            <img src="${model.currentWardrobe[i][j].img}">
+            <img class = "clothing" src="${model.currentWardrobe[i][j].img}">
             `;
       }
     }
@@ -67,4 +84,32 @@ function buttonFill() {
       `;
   }
   return html;
+}
+function changeArticle(selection) {
+  let html = "";
+  let clothing = "";
+  for (let i = 0; i < model.tempCategories[selection].length; i++) {
+    clothing += /*html*/ `
+    <img class = "clothing" 
+    onmouseover="this.style = 'background-color: green; cursor: pointer;'"
+    onmouseout="this.style.backgroundColor = 'transparent'"
+    onclick = "commenceChange( ${selection}, ${i} )" 
+    src= "${model.tempCategories[selection][i].img}">
+    `;
+  }
+  html += /*html*/ `
+  <div class="subSelection">¨
+    ${clothing}
+  </div>
+  `;
+  model.currentChange = html;
+  model.changeCurrent = true;
+  suitUpScreen();
+}
+function commenceChange(category, replacement) {
+  model.currentOutfit[category] = model.tempCategories[category][replacement];
+  model.changeCommenced = true;
+  model.currentChange = "";
+  suitUpScreen();
+  console.log(category, replacement);
 }

@@ -472,4 +472,7 @@ const model = {
   currentOutfit: [],
   currentCondition: [],
   currentWardrobe: [[], [], [], [],], 
+  currentChange: "",
+  changeCurrent: false,
+
 };

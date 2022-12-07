@@ -436,15 +436,15 @@ const model = {
   weather: [
     {
       type: "sunny",
-      img: "bilde av sol",
+      img: "IMG/weather and season/sunny.png",
     },
     {
       type: "cloudy",
-      img: "bilde av sky",
+      img: "IMG/weather and season/cloudy.png",
     },
     {
       type: "rainy",
-      img: "bilde av regn",
+      img: "IMG/weather and season/rainy.png",
     },
   ],
 
@@ -452,19 +452,19 @@ const model = {
   season: [
     {
       type: "spring",
-      img: "bilde av vår",
+      img: "IMG/weather and season/spring.png",
     },
     {
       type: "summer",
-      img: "bilde av sommer",
+      img: "IMG/weather and season/summer.png",
     },
     {
       type: "fall",
-      img: "bilde av høst",
+      img: "IMG/weather and season/fall.png",
     },
     {
       type: "winter",
-      img: "bilde av vinter",
+      img: "IMG/weather and season/winter.png",
     },
   ],
   categories: ["headwear", "tops", "bottoms", "socks", "shoes",],

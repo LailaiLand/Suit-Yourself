@@ -4,6 +4,13 @@ function fetchConditions() {
   //du kan nå rote rundt i hele appen uten at været endrer seg i hvert bilde.
   let randomWeather = model.weather[getRandom(model.weather.length)];
   let randomSeason = model.season[getRandom(model.season.length)];
+  if (randomWeather.type == "rainy" && randomSeason.type == "winter"){
+    randomWeather = 
+    {
+      type: "rainy",
+      img: "IMG/weather and season/snowy.png",
+    };
+  }
   model.currentCondition.push(randomWeather);
   model.currentCondition.push(randomSeason);
 }

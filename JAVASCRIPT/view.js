@@ -8,8 +8,10 @@ function startScreen() {
   let randomSeason = model.currentCondition[1];
   html += /*html*/ `
     <h1>Suit Yourself!</h1>
-    <div>${randomWeather.img}</div>
-    <div>${randomSeason.img}</div>
+    <h2>Current weather:</h2>
+    <img class="condition" src="${randomWeather.img}">
+    <h2>Current season:</h2>
+    <img class="condition" src="${randomSeason.img}">
     <button onclick="suitUpScreen()">Suit Up!</button> <br>
     <button onclick="wardrobeScreen()">Wardrobe</button>
     `;
@@ -22,8 +24,10 @@ function suitUpScreen() {
   let randomSeason = model.currentCondition[1];
   let html = `
   <h1>Suit Yourself!</h1>
-  <div>${randomWeather.img}</div>
-  <div>${randomSeason.img}</div>
+  <div class="subSelection">
+    <img class="icon" src="${randomWeather.img}">
+    <img class="icon" src="${randomSeason.img}">
+  </div>
   `;
   //disse funksjonene kalles ikke om jeg vil bytte enkeltplagg
   if (!model.changeCurrent) {
@@ -39,7 +43,7 @@ function suitUpScreen() {
   for (let i = 0; i < model.currentOutfit.length; i++) {
     clothes += `<img 
     class = "clothing"
-    onmouseover="this.style = 'background-color: green; cursor: pointer;'"
+    onmouseover="this.style = 'background-color: rgb(0, 178, 167); cursor: pointer;'"
     onmouseout="this.style.backgroundColor = 'transparent'"
     onclick="changeArticle(${i})"
     src="${model.currentOutfit[i].img}">`;
@@ -47,8 +51,11 @@ function suitUpScreen() {
   html += /*html*/ `
       <div class="screen">
         ${clothes}
-        ${model.changeCurrent ? model.currentChange :
-          '<button onclick="suitUpScreen()">Reselect all</button>'}
+        ${
+          model.changeCurrent
+            ? model.currentChange
+            : '<button onclick="suitUpScreen()">Reselect all</button>'
+        }
         <button onclick="startScreen()">Back</button>
       </div>
         `;
@@ -95,8 +102,8 @@ function changeArticle(selection) {
   let clothing = "";
   for (let i = 0; i < model.tempCategories[selection].length; i++) {
     clothing += /*html*/ `
-    <img class = "clothing" 
-    onmouseover="this.style = 'background-color: green; cursor: pointer;'"
+    <img class = "clothingSub" 
+    onmouseover="this.style = 'background-color: rgb(0, 178, 167); cursor: pointer;'"
     onmouseout="this.style.backgroundColor = 'transparent'"
     onclick = "commenceChange( ${selection}, ${i} )" 
     src= "${model.tempCategories[selection][i].img}">

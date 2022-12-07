@@ -1,9 +1,11 @@
 fetchConditions();
-function fetchConditions() {
+function fetchConditions(forcedWeather, forcedSeason) {
   //velger tilfeldig vær og sesong når du oppdaterer siden.
   //du kan nå rote rundt i hele appen uten at været endrer seg i hvert bilde.
   let randomWeather = model.weather[getRandom(model.weather.length)];
   let randomSeason = model.season[getRandom(model.season.length)];
+  if (forcedWeather) randomWeather = model.weather[forcedWeather];
+  if (forcedSeason) randomWeather = model.weather[forcedSeason];
   if (randomWeather.type == "rainy" && randomSeason.type == "winter"){
     randomWeather = 
     {

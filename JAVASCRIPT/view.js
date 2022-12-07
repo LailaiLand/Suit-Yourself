@@ -1,5 +1,8 @@
-//TODO legg til CSS.
-//TODO finn ut hvordan kan hente verdi av .img inni apostroffer i img tag
+//TODO legge til dropdown menues så kan velge vær og sesong
+//      Bruk select-tag med id, så kan skrive forskjellig i option value og innerHTML
+//      Prøv med value som indextall og bruk knapp til å hente med id som parameter
+//      Det burde trigge argumentet i fetchWeather ETTER den kjører random. Should also get snow.
+
 startScreen();
 function startScreen() {
   model.currentWardrobe = [[], [], [], []];

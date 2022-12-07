@@ -50,7 +50,9 @@ function suitUpScreen() {
   }
   html += /*html*/ `
       <div class="screen">
-        ${clothes}
+        <div class="outfit">
+          ${clothes}
+        </div>
         ${
           model.changeCurrent
             ? model.currentChange

@@ -18,8 +18,12 @@ function startScreen() {
 function suitUpScreen() {
   //velger random klær etter forholdene
   let clothes = "";
+  let randomWeather = model.currentCondition[0];
+  let randomSeason = model.currentCondition[1];
   let html = `
   <h1>Suit Yourself!</h1>
+  <div>${randomWeather.img}</div>
+  <div>${randomSeason.img}</div>
   `;
   //disse funksjonene kalles ikke om jeg vil bytte enkeltplagg
   if (!model.changeCurrent) {

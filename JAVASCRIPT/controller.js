@@ -20,6 +20,7 @@ function fetchClothes() {
   let weatherCondition = model.currentCondition[0].type;
   let seasonCondition = model.currentCondition[1].type;
   let currentCategory = "";
+  model.tempCategories = [[], [], [], [], [],];
   console.log("været er", weatherCondition, "sesongen er", seasonCondition);
   for (find of model.clothing) {
     for (let i = 0; i < model.categories.length; i++) {

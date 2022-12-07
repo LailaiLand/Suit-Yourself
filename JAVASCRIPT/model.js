@@ -474,5 +474,5 @@ const model = {
   currentWardrobe: [[], [], [], [],], 
   currentChange: "",
   changeCurrent: false,
-
+  changeCommenced: false,
 };

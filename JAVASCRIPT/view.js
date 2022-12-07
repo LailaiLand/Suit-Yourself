@@ -16,18 +16,18 @@ function startScreen() {
   model.view.innerHTML = html;
 }
 function suitUpScreen() {
-  //TODO legge til onclick så kan velge hele tempCategory plagget ligger på
-  //så kan bytte med noe annet som passer conditions
-  //TODO legg klær inn i egen div med class så kan CSS-e dem
+  //velger random klær etter forholdene
   let clothes = "";
   let html = `
   <h1>Suit Yourself!</h1>
   `;
+  //disse funksjonene kalles ikke om jeg vil bytte enkeltplagg
   if (!model.changeCurrent) {
     model.currentOutfit = [];
     fetchClothes();
     sortClothes();
   }
+  //når enkeltplagg er byttet kan vi kjøre funksjonene over
   if (model.changeCommenced) {
     model.changeCurrent = false;
     model.changeCommenced = false;
@@ -43,8 +43,8 @@ function suitUpScreen() {
   html += /*html*/ `
       <div class="screen">
         ${clothes}
-        ${model.changeCurrent ? model.currentChange : ""}
-        <button onclick="suitUpScreen()">Reselect all</button>
+        ${model.changeCurrent ? model.currentChange :
+          '<button onclick="suitUpScreen()">Reselect all</button>'}
         <button onclick="startScreen()">Back</button>
       </div>
         `;
@@ -86,6 +86,7 @@ function buttonFill() {
   return html;
 }
 function changeArticle(selection) {
+  //henter ut alle tilgjengelige klær etter forhold så kan bytte ut i suit up
   let html = "";
   let clothing = "";
   for (let i = 0; i < model.tempCategories[selection].length; i++) {
@@ -107,6 +108,7 @@ function changeArticle(selection) {
   suitUpScreen();
 }
 function commenceChange(category, replacement) {
+  //bytter ut suit up-plagg og sier at de er byttet så vi kan randomisere igjen
   model.currentOutfit[category] = model.tempCategories[category][replacement];
   model.changeCommenced = true;
   model.currentChange = "";
